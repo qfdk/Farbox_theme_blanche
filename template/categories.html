@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Categories{% endblock %}
+{% block menu %}
+        <li><a href="/">Home</a></li>
+        <li><a href="/archive">Archive</a></li>
+        <li class="active"><a href="/categories">Categories</a></li>
+        <li><a href="/tags">Tags</a></li>
+        <li><a href="/about">About</a></li>
+{% endblock %}
+{% block content %}
+<article class="topcontent">
+    <!-- <ul class="categories" id="categories"> -->
+    {% set categories = get_folders(level=[1,2], min_posts_count=1) %}
+    {% for category in  sorted_by_position(categories)%}
+        <!-- <li> -->
+            <ahref="/category/{{ category.path }}">
+                <h3>{{ category.title }}</h3>
+                <span class="label label-info"> {{ category.posts_count }} 篇文章</span>
+            </a>
+        <!-- </li> -->
+    {% endfor %}
+    <!-- </ul> -->
+</article>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+body {
+    padding: 50px 0 20px 0;
+}
+
+aside {
+    margin-top: 50px;
+    border-bottom: 1px solid #ddd;
+}
+
+article {
+    margin: 40px 0 20px 0;
+    padding: 0 20px 0 20px;
+}
+
+article div info {
+    margin: 10px 10px 0 0;
+}
+
+article hr {
+    margin-top: 0px;
+}
+
+article .more {
+    float: right;
+    margin-right: 60px;
+}
+
+article .title {
+    font-size: 22px;
+}
+
+.navbar-header button {
+    margin-right: 70px;
+}

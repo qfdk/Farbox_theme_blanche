@@ -1,0 +1,60 @@
+{% set custom_comment=get_text_file('comment_js').raw_content %} 
+{% if comment_allowed %} 
+{% if custom_comment %}
+<div id="disqus_thread" class="comments"></div>
+{{ custom_comment }} 
+{% else %}
+<div id="fb_comments_container">
+  <h3>评论列表：</h3>
+  <hr>
+  <ul id="fb_comments">
+    {% set comments = get_comments(context_doc) %} {% for comment in comments %}
+    <li class="comment">
+      <div class="avatar">
+        <img src="http://www.gravatar.com/avatar/{{ comment.email_md5 }}">
+      </div>
+      <div class="c_content">
+        <div class="author">
+          <a href="{{comment.site or '#'}}"><b>{{ comment.author or '匿名'}}</b></a>
+          <small>{{ comment.date | date("%Y-%m-%d %H:%M:%S") }}</small>
+        </div>
+        <div>
+          {{ comment.content }}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  <form id="fb_new_comment" style="margin-left: 10px;
+  margin-right: 10px;" method="post" action="#fb_new_comment">
+
+    <textarea name="content" style="resize: none;">{{ comment_content }}</textarea> {% if error %}<span class="comment_error"> {{ error }}</span>    {% endif %}
+
+    <div class="input_body">
+      <ul>
+        <li>
+          <label>尊姓大名:</label>
+          <input type="text" name="author" id="c_author">
+        </li>
+        <li>
+          <label>邮箱:</label>
+          <input type="text" name="email" id="c_email">
+        </li>
+        <li>
+          <label>网站:</label>
+          <input type="text" name="site" id="c_site">
+        </li>
+        <li>
+          <label>点我发送额：</label>
+          <input type="submit" value="发表评论" class="c_button" id="c_submit" />
+        </li>
+      </ul>
+    </div>
+
+  </form>
+
+  {% endif %}
+
+</div>
+
+{% endif %}

@@ -1,0 +1,32 @@
+<div class="content">
+	{% for post in posts %}
+	<article>
+		<div class="col-12">
+			<info>
+				<a class="title" id="pjax-container" href="{{post.url}}" title="{{ post.title }}">{{ post.title }}</a>
+				<hr>
+				<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+				<span class="label label-info" title="发布日期">
+					{{ post.date | date('%Y-%m-%d') }}
+				</span> &nbsp;
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				<span class="label label-success" title="访问量">
+					{{ post.visits or 0}}
+				</span> &nbsp; {% if post.tags %}
+				<span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+				<span class="label label-warning">
+				{% for tag in post.tags %}
+				<a href="/tags/{{ tag }}" style="color:#ffffff;">{{ tag }}</a> {% endfor %}
+				</span> {% endif %}
+			</info>
+		</div>
+		<br>
+		<div class="col-12">
+			<p>{{ post.content | limit(120) }}</p>
+		</div>
+		<a class="more" href="{{post.url}}"> More >> </a>
+	</article>
+	{% endfor %}
+	<!-- 翻页 -->
+	{% include 'include/paginator.html' %}
+</div>
