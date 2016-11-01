@@ -1,17 +1,17 @@
 {% extends 'base.html' %} {% block content %}
 <div class="row">
-    <div class="col-md-8" style="border-right: 1px solid #ddd;">
-        {% if configs.posts and posts%} {% include 'include/description.html' %} {% include 'include/posts_list.html' %} {% elif
-        configs.files and files%} {% include 'include/files_list.html' %} {% endif %}
-    </div>
-    <div class="col-md-4">
-        {% include 'include/tools.html' %}
-    </div>
+	<div class="col-md-8" style="border-right: 1px solid #ddd;">
+		{% if configs.posts and posts%} {% include 'include/description.html' %} {% include 'include/posts_list.html' %} {% elif
+		configs.files and files%} {% include 'include/files_list.html' %} {% endif %}
+	</div>
+	<div class="col-md-4">
+		{% include 'include/tools.html' %}
+	</div>
 </div>
 {% endblock %} {% block script %}
 <script type="text/javascript">
-    window.onresize= function cacher(){ var tmp=document.getElementsByClassName('col-md-4'); if(window.innerWidth < 750) { tmp[0].style.display="none"
-    ; }else{ tmp[0].style.display="block" ; } }
- if(window.innerWidth < 750) { document.getElementsByClassName( 'col-md-4')[0].style.display="none" ; }
+	window.onresize= function cacher(){ var tmp=document.getElementsByClassName('col-md-4'); if(window.innerWidth < 750) { tmp[0].style.display="none"
+	; }else{ tmp[0].style.display="block" ; } }
+	if(window.innerWidth < 750) { document.getElementsByClassName( 'col-md-4')[0].style.display="none" ; }
 </script>
 {% endblock %}
